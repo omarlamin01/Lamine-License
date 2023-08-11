@@ -11,7 +11,7 @@ class LicenseServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
+
     }
 
     /**
