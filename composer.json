@@ -11,8 +11,11 @@
     "authors": [
         {
             "name": "Lamine Omar",
-            "email": "contactomarlamine1@gmail.com"
+            "email": "contactomarlamine1@gmail.com",
+            "homepage": "https://github.com/omarlamin01"
         }
     ],
-    "require": {}
+    "require": {
+        "illuminate/support": "^10.18"
+    }
 }
