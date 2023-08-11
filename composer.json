@@ -2,7 +2,7 @@
     "name": "lamine/license",
     "description": "A licensing library for php softwares",
     "type": "library",
-    "license": "Apache 2.0",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Lamine\\License\\": "src/"
