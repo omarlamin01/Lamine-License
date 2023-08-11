@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace Lamine\License\Models;
 
-use App\Services\HardwareService;
+use Lamine\License\Tools\Hardware;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -35,11 +35,11 @@ class ProductKey extends Model
 
     public function isExpired() : bool
     {
-        $mac = HardwareService::mac();
+        $mac = Hardware::mac();
 
-        $cpuId = HardwareService::cpu();
+        $cpuId = Hardware::cpu();
 
-        $motherboardId = HardwareService::motherboard();
+        $motherboardId = Hardware::motherboard();
 
         if ($this->mac != $mac || $this->cpu != $cpuId || $this->motherboard != $motherboardId) {
             Log::error('Invalid license!!');
