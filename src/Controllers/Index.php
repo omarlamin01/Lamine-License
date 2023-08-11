@@ -10,7 +10,8 @@ use Lamine\License\Tools\Hardware;
 
 class Index
 {
-    static function store(Request $request) {
+    static function store(Request $request)
+    {
         $license_key = $request->input('key');
         $secret_key = $request->input('secret');
         $license_type = $request->input('type');
@@ -23,8 +24,7 @@ class Index
 
         $motherboardId = Hardware::motherboard();
 
-        if ($secret_key)
-        {
+        if ($secret_key) {
             $response = Http::post($access_point_url . 'generate-license', [
                 'secret' => $secret_key,
                 'software' => 'okul',
@@ -65,8 +65,7 @@ class Index
                     return redirect()->back()->withErrors(['product_key' => 'Product key is invalid.']);
                 }
             }
-        }
-        elseif ($license_key) {
+        } elseif ($license_key) {
             $response = Http::post($access_point_url . 'validate-license', [
                 'product_key' => $license_key,
                 'software' => 'okul',
@@ -106,8 +105,7 @@ class Index
                     return redirect()->back()->withErrors(['product_key' => 'Product key is invalid.']);
                 }
             }
-        }
-        else {
+        } else {
             if ($request->wantsJson()) {
                 return response()->json([
                     'message' => 'Invalid request'
@@ -118,7 +116,83 @@ class Index
         }
     }
 
-    static function checkLicense() {
+    static function webStore(Request $request)
+    {
+        $license_key = $request->input('key');
+        $secret_key = $request->input('secret');
+        $license_type = $request->input('type');
+
+        $access_point_url = env('COMPANY_URL');
+
+        $mac = Hardware::mac();
+
+        $cpuId = Hardware::cpu();
+
+        $motherboardId = Hardware::motherboard();
+
+        if ($secret_key) {
+            $response = Http::post($access_point_url . 'generate-license', [
+                'secret' => $secret_key,
+                'software' => 'okul',
+                'type' => $license_type,
+                'mac' => $mac,
+                'cpu' => $cpuId,
+                'motherboard' => $motherboardId
+            ]);
+
+            $response_body = json_decode($response->getBody());
+
+            if ($response_body->status == 'success') {
+                if (ProductKey::first()) {
+                    ProductKey::first()->delete();
+                }
+                $license = ProductKey::create([
+                    'license_key' => $response_body->product_key,
+                    'license_type' => $response_body->license_type,
+                    'expires_at' => $response_body->expires_at,
+                    'mac' => $mac,
+                    'cpu' => $cpuId,
+                    'motherboard' => $motherboardId
+                ]);
+                return redirect()->route('login');
+            } else {
+                return redirect()->back()->withErrors(['product_key' => 'Product key is invalid.']);
+            }
+        } elseif ($license_key) {
+            $response = Http::post($access_point_url . 'validate-license', [
+                'product_key' => $license_key,
+                'software' => 'okul',
+                'mac' => $mac,
+                'cpu' => $cpuId,
+                'motherboard' => $motherboardId
+            ]);
+
+            $response_body = json_decode($response->getBody());
+
+            if ($response_body->status == 'success') {
+                if (ProductKey::first()) {
+                    ProductKey::first()->delete();
+                }
+                $license = ProductKey::create([
+                    'license_key' => $license_key,
+                    'license_type' => $response_body->license_type,
+                    'expires_at' => $response_body->expires_at,
+                    'mac' => $mac,
+                    'cpu' => $cpuId,
+                    'motherboard' => $motherboardId
+                ]);
+                return redirect()->route('login');
+            } else {
+                return redirect()->back()->withErrors(['product_key' => 'Product key is invalid.']);
+            }
+        } else {
+            return redirect()->back()->withErrors(['product_key' => 'Invalid request.']);
+        }
+    }
+
+
+    static function checkLicense()
+    {
         $access_point_url = env('COMPANY_URL');
         $license = ProductKey::first();
 
