@@ -16,6 +16,9 @@
         }
     ],
     "require": {
-        "illuminate/support": "^10.18"
+        "illuminate/support": "^10.18",
+        "guzzlehttp/guzzle": "^7.7",
+        "illuminate/http": "^10.18",
+        "ext-json": "*"
     }
 }
