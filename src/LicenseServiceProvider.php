@@ -33,8 +33,6 @@ class LicenseServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/Views' => resource_path('views'),
         ], 'views');
-
-        WebviewServiceProvider::registerViewFinder();
     }
 
     /**
