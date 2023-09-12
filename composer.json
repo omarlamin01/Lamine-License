@@ -21,7 +21,6 @@
         "guzzlehttp/guzzle": "*",
         "illuminate/http": "*",
         "ext-json": "*",
-        "illuminate/database": "*",
-        "illuminate/view": "^10.22"
+        "illuminate/database": "*"
     }
 }
