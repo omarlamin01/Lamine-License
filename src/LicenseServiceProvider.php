@@ -15,7 +15,7 @@ class LicenseServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/Migrations');
 
         // Load views
-        $this->loadViewsFrom(__DIR__.'/Views', 'Lamine/License');
+        $this->loadViewsFrom(__DIR__.'/Views/', 'License');
 
         // Load Routes
         $this->loadRoutesFrom(__DIR__ . '/Routes/index.php');
