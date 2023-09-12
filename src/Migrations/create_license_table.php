@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class create_license_table extends Migration
+new class extends Migration
 {
     /**
      * Run the migrations.
@@ -37,4 +37,4 @@ class create_license_table extends Migration
     {
         Schema::dropIfExists('license');
     }
-}
+};
