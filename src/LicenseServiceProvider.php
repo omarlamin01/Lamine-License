@@ -28,6 +28,11 @@ class LicenseServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/Routes/index.php' => base_path('routes/license.php'),
         ], 'routes');
+
+        // publish views
+        $this->publishes([
+            __DIR__.'/Views' => resource_path('views'),
+        ], 'views');
     }
 
     /**
