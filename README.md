@@ -18,7 +18,8 @@ Make sure to set the 'APP_NAME' in your .env file.
 APP_NAME="Your App Name"
 ```
 
-Then add this variables to your .env file. These variables will be used to generate the license. Otherwise the license will not be generated.
+Then add this variables to your .env file. These variables will be used to generate the license. Otherwise the license
+will not be generated.
 
 ```bash
 COMPANY_URL="https://www.yourwebsite.com/"
@@ -27,7 +28,8 @@ COMPANY_MAIL="your-company@email.com"
 COMPANY_PHONE="+212 6 00 00 00 00"
 ```
 
-Important: Make sure that the 'COMPANY_URL' variable ends with a slash. And leads to a valid url that contains your licensing system backend.
+Important: Make sure that the ```COMPANY_URL``` variable ends with a slash. And leads to a valid url that contains your
+licensing system backend.
 
 ### 2. Run Migration
 
@@ -35,7 +37,8 @@ Important: Make sure that the 'COMPANY_URL' variable ends with a slash. And lead
 php artisan migrate
 ```
 
-This command will create the tables license & timestamps in your database. These tables will be used to store the licenses.
+This command will create the tables license & timestamps in your database. These tables will be used to store the
+licenses.
 
 ### 3. setup your home route
 
@@ -112,6 +115,12 @@ $schedule->call(function () {
 $schedule->call(function () {
     TimeChecker::truncateTimestamps();
 })->daily();
+```
+
+Run the scheduler.
+
+```bash
+php artisan schedule:work
 ```
 
 After finishing all the steps, run development server.
