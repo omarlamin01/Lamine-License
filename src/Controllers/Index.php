@@ -27,7 +27,7 @@ class Index
         if ($secret_key) {
             $response = Http::post($access_point_url . 'generate-license', [
                 'secret' => $secret_key,
-                'software' => 'okul',
+                'software' => env('APP_NAME'),
                 'type' => $license_type,
                 'mac' => $mac,
                 'cpu' => $cpuId,
@@ -68,7 +68,7 @@ class Index
         } elseif ($license_key) {
             $response = Http::post($access_point_url . 'validate-license', [
                 'product_key' => $license_key,
-                'software' => 'okul',
+                'software' => env('APP_NAME'),
                 'mac' => $mac,
                 'cpu' => $cpuId,
                 'motherboard' => $motherboardId
@@ -133,7 +133,7 @@ class Index
         if ($secret_key) {
             $response = Http::post($access_point_url . 'generate-license', [
                 'secret' => $secret_key,
-                'software' => 'okul',
+                'software' => env('APP_NAME'),
                 'type' => $license_type,
                 'mac' => $mac,
                 'cpu' => $cpuId,
@@ -161,7 +161,7 @@ class Index
         } elseif ($license_key) {
             $response = Http::post($access_point_url . 'validate-license', [
                 'product_key' => $license_key,
-                'software' => 'okul',
+                'software' => env('APP_NAME'),
                 'mac' => $mac,
                 'cpu' => $cpuId,
                 'motherboard' => $motherboardId
