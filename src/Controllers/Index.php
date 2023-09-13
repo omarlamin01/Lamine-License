@@ -228,4 +228,13 @@ class Index
             }
         }
     }
+
+    static function validateLicense(): bool
+    {
+        $license = ProductKey::first();
+
+        session(['license_is_valid' => $license && !$license->isExpired()]);
+
+        return $license && !$license->isExpired();
+    }
 }
