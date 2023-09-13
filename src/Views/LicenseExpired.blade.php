@@ -1,20 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Validate License</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body::after {
-            content: '';
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('login_bg.jpg') no-repeat center center/cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-    </style>
 </head>
 <body class="bg-gray-200 flex items-center flex-col justify-center min-h-screen">
 <div class="bg-white rounded-lg shadow-lg p-8 m-4 w-full max-w-md">
