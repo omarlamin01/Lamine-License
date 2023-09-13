@@ -113,3 +113,15 @@ $schedule->call(function () {
     TimeChecker::truncateTimestamps();
 })->daily();
 ```
+
+After finishing all the steps, run development server.
+
+```bash
+php artisan serve
+```
+
+And go to the home page. If everything is ok, you will see the license expired page.
+
+![screenshot](shot.PNG)
+
+In this page you can activate your license either by entering the license key or by using a secret key of your company.
