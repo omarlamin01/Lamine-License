@@ -11,7 +11,7 @@ class Hardware
         $cpuId = str_replace("ProcessorId", "", $cpuId);
         $cpuId = trim($cpuId);
         $cpuId = str_replace("\n", "", $cpuId);
-        return str_replace("\r", "", $cpuId) ?? 'not-defined';
+        return $cpuId != null ? str_replace("\r", "", $cpuId) : 'not-defined';
     }
 
     static function motherboard()
@@ -21,7 +21,7 @@ class Hardware
         $motherboardId = str_replace("SerialNumber", "", $motherboardId);
         $motherboardId = trim($motherboardId);
         $motherboardId = str_replace("\n", "", $motherboardId);
-        return str_replace("\r", "", $motherboardId) ?? 'not-defined';
+        return $motherboardId != null ? str_replace("\r", "", $motherboardId) : 'not-defined';
     }
 
     static function mac()
